@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thesis Statement Guide</title>
+    <style>
+        :root {
+            --primary-color: #3a7ca5;
+            --secondary-color: #d9e5ec;
+            --accent-color: #f4a261;
+            --text-color: #2b2d42;
+            --light-bg: #f7f9fb;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .example {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .example-heading {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .good {
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .bad {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .exercise {
+            background-color: #f6e5c5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin: 1rem 0;
+            min-height: 100px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2a5d7c;
+        }
+        
+        #feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .accordion {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-weight: bold;
+            transition: 0.4s;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accordion:after {
+            content: '\002B';
+            color: var(--primary-color);
+            font-weight: bold;
+            float: right;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .panel {
+            padding: 0 1rem;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            border-radius: 0 0 4px 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .thesis-checker {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #ebf5f0;
+            border-radius: 8px;
+        }
+        
+        .highlight {
+            background-color: #ffe066;
+            padding: 0 3px;
+        }
+        
+        .progress-container {
+            display: flex;
+            margin: 2rem 0;
+            justify-content: space-between;
+        }
+        
+        .progress-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 1rem 0.5rem;
+        }
+        
+        .progress-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            z-index: 1;
+        }
+        
+        .progress-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+            
+            .progress-container {
+                flex-direction: column;
+            }
+            
+            .progress-item:not(:last-child):after {
+                display: none;
+            }
+            
+            .progress-item {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Writing Effective Thesis Statements</h1>
+        <p class="subtitle">The foundation of a strong academic paper</p>
+    </header>
+    
+    <main>
+        <section id="introduction">
+            <h2>What is a Thesis Statement?</h2>
+            <p>A thesis statement is a concise, arguable claim that states the main point of your essay or research paper. It serves as a roadmap for your paper, telling readers what to expect and guiding your writing process.</p>
+            
+            <p>Think of your thesis statement as making a promise to your reader about what your paper will demonstrate or argue. A strong thesis statement:</p>
+            
+            <ul>
+                <li>Makes a claim that requires analysis and evidence to support</li>
+                <li>Is specific and focused on a single main idea</li>
+                <li>Takes a position that someone could reasonably disagree with</li>
+                <li>Typically appears near the end of your introduction</li>
+            </ul>
+        </section>
+        
+        <section id="importance">
+            <h2>Why Is Your Thesis Statement Important?</h2>
+            
+            <div class="progress-container">
+                <div class="progress-item">
+                    <div class="progress-number">1</div>
+                    <div class="progress-text">Focuses your writing</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-number">2</div>
+                    <div class="progress-text">Guides your research</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-number">3</div>
+                    <div class="progress-text">Helps organize ideas</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-number">4</div>
+                    <div class="progress-text">Engages your readers</div>
+                </div>
+            </div>
+            
+            <p>A well-crafted thesis statement:</p>
+            <ul>
+                <li><strong>Focuses your writing</strong> by limiting what you will discuss in your paper</li>
+                <li><strong>Guides your research</strong> by helping you identify relevant evidence</li>
+                <li><strong>Helps organize your ideas</strong> by providing a central claim around which to structure your arguments</li>
+                <li><strong>Engages your readers</strong> by making a clear, contestable claim that provokes interest</li>
+            </ul>
+        </section>
+        
+        <section id="characteristics">
+            <h2>Characteristics of an Effective Thesis Statement</h2>
+            
+            <button class="accordion">Specific and Focused</button>
+            <div class="panel">
+                <p>A good thesis narrows your topic to a specific claim that can be adequately supported within the scope of your paper.</p>
+                
+                <div class="example bad">
+                    <span class="example-heading">Too Broad:</span>
+                    "Social media affects society."
+                </div>
+                
+                <div class="example good">
+                    <span class="example-heading">Specific:</span>
+                    "Instagram's emphasis on visual content has reinforced unrealistic beauty standards among teenagers, leading to increased rates of body dissatisfaction."
+                </div>
+            </div>
+            
+            <button class="accordion">Arguable</button>
+            <div class="panel">
+                <p>Your thesis should make a claim that someone could reasonably disagree with. It should not simply state facts or observations.</p>
+                
+                <div class="example bad">
+                    <span class="example-heading">Not Arguable (Fact):</span>
+                    "World War II ended in 1945."
+                </div>
+                
+                <div class="example good">
+                    <span class="example-heading">Arguable:</span>
+                    "The economic consequences of World War II were more significant in reshaping global power structures than the military outcomes."
+                </div>
+            </div>
+            
+            <button class="accordion">Clear and Concise</button>
+            <div class="panel">
+                <p>Your thesis should be expressed in clear, straightforward language that your audience can understand.</p>
+                
+                <div class="example bad">
+                    <span class="example-heading">Unclear:</span>
+                    "This paper will look at some ways that climate change policies can impact different socioeconomic groups in various ways."
+                </div>
+                
+                <div class="example good">
+                    <span class="example-heading">Clear:</span>
+                    "Carbon tax policies disproportionately burden low-income households while offering minimal environmental benefits."
+                </div>
+            </div>
+            
+            <button class="accordion">Substantive</button>
+            <div class="panel">
+                <p>Your thesis should offer insight beyond obvious or simplistic claims.</p>
+                
+                <div class="example bad">
+                    <span class="example-heading">Simplistic:</span>
+                    "Reading books is good for students."
+                </div>
+                
+                <div class="example good">
+                    <span class="example-heading">Substantive:</span>
+                    "Regular reading of literary fiction enhances students' empathy and perspective-taking abilities, skills that standardized education metrics often fail to measure."
+                </div>
+            </div>
+        </section>
+        
+        <section id="formula">
+            <h2>Thesis Statement Formula</h2>
+            <p>While there's no single "correct" way to write a thesis statement, this basic formula can help you get started:</p>
+            
+            <div class="example">
+                <strong>[Specific Subject]</strong> + <strong>[Precise Opinion/Claim]</strong> + <strong>[Justification/Reasons]</strong>
+            </div>
+            
+            <p>Examples using this formula:</p>
+            
+            <div class="example good">
+                <strong>[Remote work]</strong> <strong>[increases employee productivity]</strong> <strong>[by eliminating commute time and reducing workplace distractions]</strong>.
+            </div>
+            
+            <div class="example good">
+                <strong>[Jane Austen's Pride and Prejudice]</strong> <strong>[critiques the marriage practices of 19th-century British society]</strong> <strong>[through its ironic portrayal of class expectations and gender limitations]</strong>.
+            </div>
+        </section>
+        
+        <section id="practice">
+            <h2>Practice Exercise</h2>
+            <p>Try writing a thesis statement for one of the following topics:</p>
+            <ul>
+                <li>The impact of social media on mental health</li>
+                <li>School uniforms in public education</li>
+                <li>The effects of artificial intelligence on employment</li>
+                <li>Online learning versus traditional classroom education</li>
+            </ul>
+            
+            <div class="exercise">
+                <h3>Write Your Thesis Statement</h3>
+                <textarea id="thesis-input" placeholder="Type your thesis statement here..."></textarea>
+                <button id="check-thesis">Check My Thesis</button>
+                <div id="feedback"></div>
+            </div>
+        </section>
+        
+        <section id="checklist">
+            <h2>Thesis Statement Checklist</h2>
+            <p>Use this checklist to evaluate your thesis statement:</p>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check1">
+                <label for="check1">My thesis makes a specific claim rather than just stating a topic.</label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check2">
+                <label for="check2">My thesis is arguable, not a statement of fact.</label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check3">
+                <label for="check3">My thesis is focused enough to be covered adequately in my paper.</label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check4">
+                <label for="check4">My thesis is expressed in clear, concise language.</label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check5">
+                <label for="check5">My thesis indicates the direction my paper will take.</label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check6">
+                <label for="check6">My thesis avoids vague language (e.g., "interesting," "unique," "special").</label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="check7">
+                <label for="check7">My thesis is not a question or announcement (e.g., "This paper will discuss...").</label>
+            </div>
+        </section>
+        
+        <section id="common-mistakes">
+            <h2>Common Thesis Statement Mistakes</h2>
+            
+            <h3>1. Too Broad or Vague</h3>
+            <p>A thesis that covers too much ground or uses imprecise language will weaken your paper.</p>
+            <div class="example bad">
+                "Technology has changed the world."
+            </div>
+            
+            <h3>2. Merely Factual</h3>
+            <p>A thesis should make an arguable claim, not just state a fact.</p>
+            <div class="example bad">
+                "Plastic pollution exists in the oceans."
+            </div>
+            
+            <h3>3. Announcement Statements</h3>
+            <p>Avoid phrases that simply announce what your paper will do.</p>
+            <div class="example bad">
+                "This essay will examine the effects of climate change on polar bears."
+            </div>
+            
+            <h3>4. Too Complicated or Convoluted</h3>
+            <p>A thesis that's difficult to understand will confuse your readers.</p>
+            <div class="example bad">
+                "The multifaceted implementations of various governmental regulatory frameworks regarding educational policy reform initiatives have precipitated a paradigmatic shift in pedagogical methodologies that intersect with socioeconomic disparities."
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Thesis Statement Guide | Created for Educational Purposes</p>
+    </footer>
+    
+    <script>
+        // Accordion functionality
+        const accordions = document.getElementsByClassName("accordion");
+        
+        for (let i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+        
+        // Thesis statement checker
+        const checkThesisBtn = document.getElementById("check-thesis");
+        const thesisInput = document.getElementById("thesis-input");
+        const feedbackDiv = document.getElementById("feedback");
+        
+        checkThesisBtn.addEventListener("click", function() {
+            const thesis = thesisInput.value.trim();
+            
+            if (thesis.length === 0) {
+                feedbackDiv.style.display = "block";
+                feedbackDiv.style.backgroundColor = "#ffcccc";
+                feedbackDiv.innerHTML = "Please enter a thesis statement to check.";
+                return;
+            }
+            
+            let feedback = [];
+            let score = 0;
+            
+            // Check for length (not too short or long)
+            if (thesis.length < 25) {
+                feedback.push("Your thesis may be too short. Consider developing it further.");
+            } else if (thesis.length > 200) {
+                feedback.push("Your thesis is quite long. Try to make it more concise.");
+            } else {
+                score += 1;
+            }
+            
+            // Check for announcement phrases
+            if (/this (paper|essay) will|I will discuss|I am going to|the purpose is/.test(thesis.toLowerCase())) {
+                feedback.push("Avoid announcement phrases like 'This paper will...' or 'I will discuss...'");
+            } else {
+                score += 1;
+            }
+            
+            // Check for question format
+            if (thesis.endsWith("?")) {
+                feedback.push("Your thesis should be a statement, not a question.");
+            } else {
+                score += 1;
+            }
+            
+            // Check for vague language
+            const vagueWords = ["good", "bad", "interesting", "nice", "amazing", "important", "many", "several", "various", "things", "aspects"];
+            const containsVagueWords = vagueWords.some(word => thesis.toLowerCase().includes(word));
+            
+            if (containsVagueWords) {
+                feedback.push("Your thesis contains vague terms. Try to be more specific.");
+            } else {
+                score += 1;
+            }
+            
+            // Check if it's likely a fact statement
+            const factPhrases = ["is a", "was a", "are", "were", "exists", "occurred", "happened"];
+            const containsFactIndicators = factPhrases.some(phrase => thesis.toLowerCase().includes(phrase)) && 
+                                           thesis.length < 60;
+            
+            if (containsFactIndicators) {
+                feedback.push("Your thesis may be a factual statement rather than an arguable claim.");
+            } else {
+                score += 1;
+            }
+            
+            // Check if it likely includes reasoning
+            const reasoningIndicators = ["because", "since", "as", "therefore", "thus", "consequently", "by", "through"];
+            const containsReasoningIndicators = reasoningIndicators.some(indicator => thesis.toLowerCase().includes(indicator));
+            
+            if (!containsReasoningIndicators) {
+                feedback.push("Consider including reasoning or justification in your thesis.");
+            } else {
+                score += 1;
+            }
+            
+            // Calculate percentage score
+            const percentScore = Math.round((score / 6) * 100);
+            
+            // Prepare feedback
+            feedbackDiv.style.display = "block";
+            
+            if (percentScore >= 80) {
+                feedbackDiv.style.backgroundColor = "#d4edda";
+                feedbackDiv.innerHTML = `<strong>Great job! (${percentScore}%)</strong><br>Your thesis statement is strong. It appears to be specific, arguable, and clear.`;
+                
+                if (feedback.length > 0) {
+                    feedbackDiv.innerHTML += "<br><br><strong>Minor suggestions:</strong><ul>";
+                    feedback.forEach(item => {
+                        feedbackDiv.innerHTML += `<li>${item}</li>`;
+                    });
+                    feedbackDiv.innerHTML += "</ul>";
+                }
+            } else if (percentScore >= 50) {
+                feedbackDiv.style.backgroundColor = "#fff3cd";
+                feedbackDiv.innerHTML = `<strong>Good start! (${percentScore}%)</strong><br>Your thesis has potential but could use some improvements:<ul>`;
+                feedback.forEach(item => {
+                    feedbackDiv.innerHTML += `<li>${item}</li>`;
+                });
+                feedbackDiv.innerHTML += "</ul>";
+            } else {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.innerHTML = `<strong>Needs work (${percentScore}%)</strong><br>Consider revising your thesis based on these suggestions:<ul>`;
+                feedback.forEach(item => {
+                    feedbackDiv.innerHTML += `<li>${item}</li>`;
+                });
+                feedbackDiv.innerHTML += "</ul>";
+            }
+        });
+        
+        // Auto-expand first accordion by default
+        window.onload = function() {
+            if (accordions.length > 0) {
+                accordions[0].click();
+            }
+        };
+    </script>
+</body>
+</html>
